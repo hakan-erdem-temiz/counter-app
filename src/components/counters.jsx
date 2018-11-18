@@ -2,51 +2,21 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
-  state = {
-    counters: [
-      { id: 1, value: 4 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 }
-    ]
-  };
-
-  handleDelete = id => {
-    const counters = this.state.counters.filter(c => c.id !== id);
-    this.setState({ counters });
-  };
-
-  handleIncrement = counter => {
-    const counters = [...this.state.counters]; // counters is clonned
-    const index = counters.indexOf(counter);
-    counters[index] = { ...counter };
-    counters[index].value++;
-    this.setState({ counters });
-  };
-
-  handleReset = () => {
-    const counters = this.state.counters.map(c => {
-      c.value = 0;
-      return c;
-    });
-    this.setState({ counters: counters });
-  };
-
   render() {
     return (
       <div>
         <button
-          onClick={this.handleReset}
+          onClick={this.props.onReset}
           className="btn btn-primary btn-sm m-2"
         >
           Reset
         </button>
-        {this.state.counters.map(co => (
+        {this.props.counters.map(co => (
           <Counter
             key={co.id}
-            onDelete={this.handleDelete}
             counter={co}
-            onIncrement={this.handleIncrement}
+            onDelete={this.props.onDelete}
+            onIncrement={this.props.onIncrement}
           />
         ))}
         {/*<Counter<h1>Hello</h1> </Counter>*/}
