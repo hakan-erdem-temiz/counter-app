@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    value: this.props.counter.value
-  };
-
   styles = {
     fontSize: 10,
     fontWeight: "bold"
@@ -22,7 +18,7 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondry btn-sm"
+          className="btn btn-secondary btn-sm m-2"
         >
           Increment
         </button>
