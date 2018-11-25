@@ -17,6 +17,7 @@ class Counters extends Component {
             counter={co}
             onDelete={this.props.onDelete}
             onIncrement={this.props.onIncrement}
+            onDecrement={this.props.onDecrement}
           />
         ))}
         {/*<Counter<h1>Hello</h1> </Counter>*/}

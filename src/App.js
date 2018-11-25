@@ -13,6 +13,17 @@ class App extends Component {
     ]
   };
 
+  constructor() {
+    super();
+    console.log("App - Constructor");
+  }
+
+  componentDidMount() {
+    // Ajax Call
+    //this.setState({ movies});
+    console.log("App - Mounted");
+  }
+
   handleDelete = id => {
     const counters = this.state.counters.filter(c => c.id !== id);
     this.setState({ counters });
@@ -23,6 +34,14 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
+    this.setState({ counters });
+  };
+
+  handleDecrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    if (counters[index].value > 0) counters[index].value--;
     this.setState({ counters });
   };
 
@@ -47,6 +66,7 @@ class App extends Component {
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
           />
         </main>
